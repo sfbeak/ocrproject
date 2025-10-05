@@ -1,0 +1,10 @@
+flask==3.0.3
+flask-cors==4.0.1
+paddleocr==2.7.0.3
+pdf2image==1.17.0
+numpy==1.26.4
+Pillow==10.4.0
+requests==2.32.3
+openai>=1.40.0
+python-dotenv==1.1.1
+paddlepaddle==2.6.1

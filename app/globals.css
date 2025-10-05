@@ -1,0 +1,108 @@
+:root { --bg:#0b0c10; --panel:#121318; --text:#e9edf1; --muted:#8892a6; --brand:#4da3ff; }
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{font-family: ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Noto Sans,Ubuntu,Cantarell,Helvetica Neue,Arial,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text)}
+a{color:var(--brand);text-decoration:none}
+.container{max-width:1200px;margin:0 auto;padding:24px}
+.card{background:var(--panel);border:1px solid #1d2028;border-radius:16px;padding:16px;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+.grid{display:grid;gap:16px;grid-template-columns: repeat(auto-fill,minmax(260px,1fr))}
+.btn{background:#1e2430;border:1px solid #2b3342;color:var(--text);padding:8px 14px;border-radius:10px;cursor:pointer}
+.btn:hover{border-color:var(--brand)}
+.toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.input{background:#0f1117;border:1px solid #262a34;color:var(--text);padding:8px 10px;border-radius:10px;width:200px}
+.pill{font-size:12px;color:var(--muted);background:#0f1117;padding:3px 8px;border-radius:999px;border:1px solid #20242e}
+.row{display:flex;gap:8px;align-items:center}
+.muted{color:var(--muted)}
+.badge{background:#182033;color:#cfe2ff;padding:2px 8px;border-radius:999px;font-size:12px;border:1px solid #24314c}
+.result{background:#0e1420;border:1px solid #1f2a45;padding:8px;border-radius:12px;cursor:pointer}
+.result:hover{border-color:var(--brand)}
+label.switch{display:inline-flex;align-items:center;gap:8px;user-select:none}
+/* --- 首页卡片按钮兜底 --- */
+.grid > .card {
+    /* 把每张卡片变成两列：左内容 + 右操作 */
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 108px; /* 右列固定，不收缩 */
+    align-items: start;
+    gap: 12px;
+}
+
+/* 右列的按钮：横排、不可收缩、有最小宽度 */
+.grid > .card .btn {
+    writing-mode: horizontal-tb !important;
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 88px !important;
+    height: 36px !important;
+    padding: 0 14px !important;
+    width: auto !important;
+    max-width: none !important;
+    transform: none !important;
+    justify-self: end;     /* 卡片右上角对齐 */
+}
+
+/* 卡片内那条“文件：xxx.pdf”的气泡，避免顶到按钮 */
+.grid > .card .muted,
+.grid > .card .pill {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* 让首页卡片成为两列：左内容 + 右操作列（固定宽度，不收缩） */
+.grid > .card{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) 108px; /* 右列固定 */
+    align-items:start;
+    gap:12px;
+}
+
+/* 标题：最多 3 行，禁止溢出卡片 */
+.grid > .card :is(h1,h2,h3,.name,.title){
+    min-width:0;                     /* 允许收缩，否则会把右列挤瘦 */
+    line-height:1.35;
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:3;            /* 3 行省略 */
+    overflow:hidden;
+    word-break:break-word;
+    overflow-wrap:anywhere;          /* 中文/长串也能断 */
+}
+
+/* “打开”按钮：固定在右列，横排、不收缩 */
+.grid > .card :is(a.btn,.openBtn,button.btn){
+    grid-column:2;                   /* 放右列 */
+    justify-self:end;
+    writing-mode:horizontal-tb !important;
+    white-space:nowrap !important;
+    word-break:keep-all !important;
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    min-width:88px !important;
+    height:36px;
+    padding:0 14px;
+}
+
+/* “文件：xxx.pdf” 这行：占一整行（跨两列），并做省略 */
+.grid > .card :is(.meta,.muted,.pill){
+    grid-column:1 / -1;             /* 跨两列 → 不再被挤到按钮下面只剩 1 个字 */
+    min-width:0;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+
+/* 如果小屏你更想直接隐藏“文件：xxx”，打开这个媒体查询即可 */
+/*
+ * @media (max-width:640px){
+ *  .grid > .card :is(.meta,.muted,.pill){ display:none; }
+ * }
+ */
+/* 让它跨两列，整行显示并省略 */
+
+/* 首页卡片里把“文件：xxx.pdf”的气泡干掉 */
+.grid > .card .pill { display: none !important; }

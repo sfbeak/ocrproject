@@ -1,0 +1,6 @@
+{
+  "/view/[slug]/page": "app/view/[slug]/page.js",
+  "/page": "app/page.js",
+  "/api/pdfs/route": "app/api/pdfs/route.js",
+  "/api/proxy/route": "app/api/proxy/route.js"
+}

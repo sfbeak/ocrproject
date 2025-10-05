@@ -1,0 +1,20 @@
+{
+  "title": "示例电路图库",
+  "items": [
+    {
+      "slug": "manual-1",
+      "name": "412-DFH1180E3系列汽车使用手册",
+      "file": "/pdfs/412-DFH1180E3.DFH5180CCYE3.DFH5180XXYE3系列汽车使用手册(D560.KR20.KR21.H1909).pdf"
+    },
+    {
+      "slug": "manual-2",
+      "name": "一汽解放_新款J6L_整车线束图",
+      "file": "/pdfs/一汽解放_新款J6L_整车线束图【含各类选装配置】【锡柴自主FA10-气驱罐】【国六】.pdf"
+    },
+    {
+      "slug": "manual-3",
+      "name": "江铃_福顺_整车电路图册",
+      "file": "/pdfs/江铃_福顺_整车电路图册【ADAS、AT】【二阶段】【20230703】.pdf"
+    }
+  ]
+}
